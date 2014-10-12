@@ -1115,7 +1115,7 @@ public class EC2Instance extends AbstractVMSupport<AWSCloud> {
     public boolean isSubscribed() throws InternalException, CloudException {
         APITrace.begin(getProvider(), "isSubscribedVirtualMachine");
         try {
-            Cache<Map> cache = Cache.getInstance(getProvider(), "isSubscribedVirtualMachine", Map.class, CacheLevel.CLOUD_ACCOUNT);
+            Cache<Map> cache = Cache.getInstance(getProvider(), "isSubscribedVirtualMachine", Map.class, CacheLevel.REGION_ACCOUNT);
             Collection<Map> subscribed = (Collection<Map>)cache.get(getContext());
             if (subscribed != null) {
                 return ((Boolean)subscribed.iterator().next().get(AWSCloud.TRUTHMAP_KEY)).booleanValue();

@@ -860,7 +860,7 @@ public class S3 extends AbstractBlobStoreSupport {
     public boolean isSubscribed() throws CloudException, InternalException {
         APITrace.begin(provider, "Blob.isSubscribed");
         try {
-            Cache<Map> cache = Cache.getInstance(provider, "S3.isSubscribed", Map.class, CacheLevel.CLOUD_ACCOUNT);
+            Cache<Map> cache = Cache.getInstance(provider, "S3.isSubscribed", Map.class, CacheLevel.REGION_ACCOUNT);
             Collection<Map> subscribed = (Collection<Map>)cache.get(provider.getContext());
             if (subscribed != null) {
                 return ((Boolean)subscribed.iterator().next().get(AWSCloud.TRUTHMAP_KEY)).booleanValue();

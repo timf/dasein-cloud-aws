@@ -244,7 +244,7 @@ public class CloudFront implements CDNSupport {
 	public boolean isSubscribed() throws InternalException, CloudException {
         APITrace.begin(provider, "CDN.isSubscribed");
         try {
-            Cache<Map> cache = Cache.getInstance(provider, "CDN.isSubscribed", Map.class, CacheLevel.CLOUD_ACCOUNT);
+            Cache<Map> cache = Cache.getInstance(provider, "CDN.isSubscribed", Map.class, CacheLevel.REGION_ACCOUNT);
             Collection<Map> subscribed = (Collection<Map>)cache.get(provider.getContext());
             if (subscribed != null) {
                 return ((Boolean)subscribed.iterator().next().get(AWSCloud.TRUTHMAP_KEY)).booleanValue();

@@ -520,7 +520,7 @@ public class AutoScaling implements AutoScalingSupport {
     public boolean isSubscribed() throws CloudException, InternalException {
         APITrace.begin(provider, "AutoScaling.isSubscribed");
         try {
-            Cache<Map> cache = Cache.getInstance(provider, "AutoScaling.isSubscribed", Map.class, CacheLevel.CLOUD_ACCOUNT);
+            Cache<Map> cache = Cache.getInstance(provider, "AutoScaling.isSubscribed", Map.class, CacheLevel.REGION_ACCOUNT);
             Collection<Map> subscribed = (Collection<Map>)cache.get(provider.getContext());
             if (subscribed != null) {
                 return ((Boolean)subscribed.iterator().next().get(AWSCloud.TRUTHMAP_KEY)).booleanValue();

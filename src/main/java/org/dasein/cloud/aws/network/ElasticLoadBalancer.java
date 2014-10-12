@@ -472,7 +472,7 @@ public class ElasticLoadBalancer extends AbstractLoadBalancerSupport<AWSCloud> {
                     return false;
                 }
 
-                Cache<Map> cache = Cache.getInstance(getProvider(), "LB.isSubscribed", Map.class, CacheLevel.CLOUD_ACCOUNT);
+                Cache<Map> cache = Cache.getInstance(getProvider(), "LB.isSubscribed", Map.class, CacheLevel.REGION_ACCOUNT);
                 Collection<Map> subscribed = (Collection<Map>)cache.get(getContext());
                 if (subscribed != null) {
                     return ((Boolean)subscribed.iterator().next().get(AWSCloud.TRUTHMAP_KEY)).booleanValue();

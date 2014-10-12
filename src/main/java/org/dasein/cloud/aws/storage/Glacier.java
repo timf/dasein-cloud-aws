@@ -236,7 +236,7 @@ public class Glacier implements OfflineStoreSupport {
                 throw new CloudException("No region ID was specified");
             }
 
-            Cache<Map> cache = Cache.getInstance(provider, "Glacier.isSubscribed", Map.class, CacheLevel.CLOUD_ACCOUNT);
+            Cache<Map> cache = Cache.getInstance(provider, "Glacier.isSubscribed", Map.class, CacheLevel.REGION_ACCOUNT);
             Collection<Map> subscribed = (Collection<Map>)cache.get(provider.getContext());
             if (subscribed != null) {
                 return ((Boolean)subscribed.iterator().next().get(AWSCloud.TRUTHMAP_KEY)).booleanValue();

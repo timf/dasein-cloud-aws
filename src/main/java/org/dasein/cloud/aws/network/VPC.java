@@ -1297,7 +1297,7 @@ public class VPC extends AbstractVLANSupport {
     public boolean isSubscribed() throws CloudException, InternalException {
         APITrace.begin(provider, "VLAN.isSubscribed");
         try {
-            Cache<Map> cache = Cache.getInstance(getProvider(), "VLAN.isSubscribed", Map.class, CacheLevel.CLOUD_ACCOUNT);
+            Cache<Map> cache = Cache.getInstance(getProvider(), "VLAN.isSubscribed", Map.class, CacheLevel.REGION_ACCOUNT);
             Collection<Map> subscribed = (Collection<Map>)cache.get(getContext());
             if (subscribed != null) {
                 return ((Boolean)subscribed.iterator().next().get(AWSCloud.TRUTHMAP_KEY)).booleanValue();

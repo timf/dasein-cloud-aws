@@ -484,7 +484,7 @@ public class AMI extends AbstractImageSupport {
     public boolean isSubscribed() throws CloudException, InternalException {
         APITrace.begin(getProvider(), "Image.isSubscribed");
         try {
-            org.dasein.cloud.util.Cache<Map> cache = org.dasein.cloud.util.Cache.getInstance(getProvider(), "Image.isSubscribed", Map.class, CacheLevel.CLOUD_ACCOUNT);
+            org.dasein.cloud.util.Cache<Map> cache = org.dasein.cloud.util.Cache.getInstance(getProvider(), "Image.isSubscribed", Map.class, CacheLevel.REGION_ACCOUNT);
             Collection<Map> subscribed = (Collection<Map>)cache.get(getContext());
             if (subscribed != null) {
                 return ((Boolean)subscribed.iterator().next().get(AWSCloud.TRUTHMAP_KEY)).booleanValue();
